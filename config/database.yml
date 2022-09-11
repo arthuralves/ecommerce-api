@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  user: arthurdb
+  password: db@rthur22
+  host: localhost
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: ecommerce_api_development
+
+test:
+  <<: *default
+  database: ecommerce_api_test
+
+production:
+  <<: *default
+  database: ecommerce_api_production
+  username: ecommerce_api
+  password: <%= ENV['ECOMMERCE_API_DATABASE_PASSWORD'] %>
